@@ -1,4 +1,3 @@
-/* You can add global styles to this file, and also import other style files */
 @use '@angular/material' as mat;
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
@@ -13,83 +12,68 @@ html {
     density: 0
   ));
   }
+
+  
   body {
     // background: var(--mat-sys-surface);
     color: var(--mat-sys-on-surface);
   }
   :root {
     @include mat.toolbar-overrides((
-      container-background-color: #E43E48,
+      container-background-color:var(--mat-sys-primary),
       container-text-color: #ffffff,
-    //   mobile-height:200px,
     ));
+
+    @include mat.icon-overrides((
+      color: #ffffff,
+    ));
+    
     .my-custom-button {
+      @include mat.icon-overrides((
+      color: var(--mat-sys-primary),
+    ));
     @include mat.button-overrides((
-        // outlined-outline-color: orange,
-        // outlined-container-height: 7%,
-        // outlined-label-text-color: red,
-        outlined-outline-color: #e43e38,
+        outlined-outline-color: var(--mat-sys-primary),
   ));
   
   &:hover {
-    background-color: #e43e38; /* Red background on hover */
-    color: #ffffff; /* White text on hover */
+    .mat-icon {
+      color: #ffffff; 
+    }
+    background-color: var(--mat-sys-primary); 
+    color: #ffffff; 
   }
     }
     .my-custom-card{
     @include mat.card-overrides((
-    subtitle-text-color: orange,
+    subtitle-text-color: var(--mat-sys-primary),
     outlined-container-color:#ffffff,
-    // outlined-container-shape:3%
-    // elevated-container-color: blue,
   ));
   &:hover {
-    background-color: green; /* Red background on hover */
-    color: #ffffff; /* White text on hover */
+    background-color: var(--mat-sys-surface); 
+    color: black; 
     transition: background-color 0.3s, color 0.3s;
     transform: scale(0.99);
   }
     }
-.form{
+.my-custom-form-field{
+  
+  @include mat.icon-overrides((
+    color: black,
+  ));
+    @include mat.form-field-density(-3);
     @include mat.form-field-overrides((
       outlined-label-text-size:0.75rem,
       container-text-size:0.9rem,
       container-text-line-height:0.5rem,
-    outlined-caret-color: orange,
-
-    //container-height: 5px,
-    // filled-focus-active-indicator-color: red,
-    // filled-active-indicator-height: 30px,
-    // outlined-container-shape: 18px,
-    outlined-focus-outline-color:black,
-    outlined-focus-label-text-color:black,
-    // container-text-line-height:1rem,
-    // outlined-label-text-color:green,
-    // outlined-input-text-color:pink,
-    // outlined-outline-width:1px,
-    // outlined-outline-container-height:10px,
-    outlined-error-label-text-color:red,
-    // outlined-hover-outline-color:yellow
-    error-text-color:red,
-    // container-text-line-height:0.5rem,
-    // label-text-size: 0.75rem,
-    // container-text-size: 1rem,
-    container-height:35px
-    // container-vertical-padding:10px
-    
-
-    
+      outlined-focus-outline-color:black,
+      outlined-focus-label-text-color:black,
+      outlined-error-label-text-color:red,
+      error-text-color:red,
+      container-height:40px
   ));
-  .mdc-text-field--outlined{
-    height: 35px !important;
-   }
-  }
-   .mat-mdc-text-field-wrapper .mat-mdc-form-field-flex .mat-mdc-floating-label {
-    top:calc(var(container-height)/3.5) !important;
-    margin-bottom: 25px !important;
-  }
- 
-
+  
+}
   @include mat.sidenav-overrides((
     container-background-color: orange,
     container-text-color: red,
