@@ -1,0 +1,18 @@
+.retailer-section {
+    margin: 20px 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 20px;
+  }
+  
+  .retailer-name {
+    text-align: center; /* Centers the text horizontally */
+    font-size: 24px; /* Adjust the font size as needed */
+    font-weight: bold; /* Makes the retailer name bold */
+    margin-bottom: 20px; /* Adds spacing below the retailer name */
+  }
+  .tiffin-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
