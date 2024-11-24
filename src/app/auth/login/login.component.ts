@@ -92,10 +92,15 @@ export class LoginComponent {
       this.authService.login(loginData).subscribe({
             next: (responseData) => {
               console.log('responsedata', responseData);
-              this.snackbarService.showSuccess("Login Successfully...!")
-              // this.router.navigate(['/navbar']);
+              sessionStorage.setItem('token', responseData.token); // Save token
+              sessionStorage.setItem('refreshToken', responseData.refreshToken); // Save refreshToken
+              this.snackbarService.showSuccess('Login Successfully!');
+              this.router.navigate(['/navbar']); // Redirect to the main page or dashboard
             },
-            error: (e) => console.error('Login Error:', e),
+            error: (e) => {
+              console.error('Login Error:', e);
+              this.snackbarService.showError('Login Failed. Please try again.');
+            },
             complete: () => console.info('complete'),
           });
         }

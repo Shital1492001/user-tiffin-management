@@ -14,6 +14,20 @@
     <mat-icon>account_circle</mat-icon>
   </button>
   <button mat-icon-button>
-    <mat-icon matTooltip="Logout">power_settings_new</mat-icon>
+    <mat-icon matTooltip="Logout" (click)="onLogout()">power_settings_new</mat-icon>
   </button>
 </mat-toolbar>
+
+<br><br><br>
+<mat-toolbar color="primary" class="footer mat-elevation-z4">
+  <div fxLayout="column" fxLayout.md="row" fxLayoutAlign="center center" class="footer-content">
+    <span>&copy; 2024 Tiffin Service. All Rights Reserved.</span>
+    <div fxFlex></div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <a href="#" mat-button>Privacy Policy</a>
+      <a href="#" mat-button>Terms of Service</a>
+      <a href="#" mat-button>Contact Us</a>
+    </div>
+  </div>
+</mat-toolbar>
+

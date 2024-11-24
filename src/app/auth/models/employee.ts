@@ -4,6 +4,7 @@ export interface LoginResponse{
     statusCode:number;
     success:true;
     token:string;
+    refreshToken:string,
     _id:string;
 }
 export interface Login{

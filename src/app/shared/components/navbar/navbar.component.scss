@@ -1,3 +1,22 @@
 .space-between {
     flex: 1 1 auto;
   }
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    color: white;
+    padding: 8px 16px;
+  }
+  
+  .footer-content a[mat-button] {
+    color: white;
+    margin: 0 8px;
+    text-decoration: none;
+  }
+  
+  .footer-content span {
+    text-align: center;
+  }
+  
