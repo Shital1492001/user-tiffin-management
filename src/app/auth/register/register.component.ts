@@ -19,7 +19,8 @@ import { Organization, Location } from '../models/organizations';
 import { OrganizationService } from '../services/organization.service';
 import { AuthService } from '../services/auth.service';
 import { MatGridListModule } from '@angular/material/grid-list';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { SnackbarService } from '../../shared/services/snackbar.service';
 
 
 @Component({
@@ -48,7 +49,9 @@ export class RegisterComponent {
 
   constructor(
     private organizationService: OrganizationService,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackbar:SnackbarService,
+    private router:Router
   ) {
     this.employeeForm = new FormGroup({
       username: new FormControl('', [
@@ -320,18 +323,18 @@ export class RegisterComponent {
           console.log('Register', responseData);
           if (responseData.statusCode === 201) {
             console.log('Admin Registered Data', responseData);
-            // this.snackbar.showSuccess('Registration successfully!');
-            // this.router.navigate(['/']);
+            this.snackbar.showSuccess('Registration successfully!');
+            this.router.navigate(['/login']);
           }
         },
         error: (error) => {
-          // this.snackbar.showError('Registration failed:');
+          this.snackbar.showError('Registration failed:');
           console.log('Registration failed:...', error);
         },
       });
     } else {
       markAllControlsAsDirtyAndTouched(this.employeeForm);
-      // this.snackbar.showError('Please Fill in all required information');
+      this.snackbar.showError('Please Fill in all required information');
     }
   }
 }
