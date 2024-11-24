@@ -1,73 +1,11 @@
 
-
-<!-- <div class="tiffin-card">
- 
-  <div class="tiffin-image">
-    <img 
-      [src]="tiffin.tiffin_image ? tiffin.tiffin_image : 'Tiffin1.jpg'" 
-      alt="Tiffin Image" />
-  </div>
-
- 
-  <div class="tiffin-details">
-    <h3>{{ tiffin.tiffin_name }}</h3>
-    <p>{{ tiffin.tiffin_description }}</p>
-    <p>Type: {{ tiffin.tiffin_type }}</p>
-    <p>Price: ₹{{ tiffin.tiffin_price }}</p>
-    <p>Rating: {{ tiffin.tiffin_rating }}</p>
-    <p *ngIf="tiffin.tiffin_isavailable">Available</p>
-    <p *ngIf="!tiffin.tiffin_isavailable">Out of Stock</p>
-    <button>Add to cart</button>
-  </div>
-</div> -->
-
-
-<!-- <mat-card class="tiffin-details" appearance="outlined">
-  <mat-card-header>
-    <mat-card-title-group>
-      <mat-card-title>{{tiffin.tiffin_name}}</mat-card-title>
-      <mat-card-subtitle>Type : {{tiffin.tiffin_type}}</mat-card-subtitle>
-      <mat-card-subtitle>Price :{{tiffin.tiffin_price}}</mat-card-subtitle>
-      <mat-card-subtitle>{{ tiffin.tiffin_description }}</mat-card-subtitle>
-     
-      <img mat-card-lg-image [src]="tiffin.tiffin_image ? tiffin.tiffin_image : 'Tiffin1.jpg'" >
-    </mat-card-title-group>
-  </mat-card-header>
-  <mat-card-content>
-    {{longText}}
-    {{ tiffin.tiffin_description }}
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-stroked-button class="my-custom-button">Add to cart</button>
- </mat-card-actions>
-</mat-card> -->
-
-
-<!-- <mat-card class="tiffin-details" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>{{tiffin.tiffin_name}}</mat-card-title>
-   
-  </mat-card-header>
-  <img class ="tiffin-image" mat-card-image [src]="tiffin.tiffin_image ? tiffin.tiffin_image : 'Tiffin1.jpg'" alt="TiffinImage">
-  <mat-card-subtitle>Type : {{tiffin.tiffin_type}}</mat-card-subtitle>
-  <mat-card-subtitle>Price :{{tiffin.tiffin_price}}</mat-card-subtitle>
-  <mat-card-content>
-    <p>
-      {{ tiffin.tiffin_description }}
-    </p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-stroked-button class="my-custom-button">Add to cart</button>
-  </mat-card-actions>
-</mat-card> -->
-
 <div class="tiffin-card-container">
   <mat-card class="my-custom-card" appearance="outlined">
     <mat-card-header class="header-flex">
       <div mat-card-avatar class="example-header-image"></div>
       <div class="header-text">
         <!-- <mat-icon >eco</mat-icon> -->
+        <!-- <mat-card-title>{{ tiffin._id }}</mat-card-title> -->
         <mat-card-title>{{ tiffin.tiffin_name }}</mat-card-title>
         <mat-card-subtitle>Type: {{ tiffin.tiffin_type }}</mat-card-subtitle>
       </div>
@@ -80,17 +18,21 @@
     >
     <mat-card-content>
       <mat-icon >eco</mat-icon>
+      <mat-card-title>{{ tiffin.quantity }}</mat-card-title>
       <mat-card-subtitle>Price: {{ tiffin.tiffin_price }}</mat-card-subtitle>
       <p>
         {{ tiffin.tiffin_description }}
       </p>
     </mat-card-content>
     <mat-card-actions class="actions-flex">
-      <button mat-stroked-button class="my-custom-button">Add to cart</button>
+      <button mat-stroked-button class="my-custom-button" (click)="navigateToDetails(tiffin._id)">Add to cart</button>
     </mat-card-actions>
   </mat-card>
  
 </div>
+
+
+
 
 
 

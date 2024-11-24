@@ -36,4 +36,26 @@ export interface Retailer {
     };
   }
 
+  export interface Items{
+    price:number,
+    quantity:number,
+    tiffin_id:string,
+    _id:string
+
+  }
+  export interface AddCartResponse{
+    statusCode: number;
+    success: boolean;
+    message: string;
+    data:{
+
+      created_at:string,
+      customer_id:string,
+      isActive:boolean,
+      items:Items[],
+      retailer_id:string,
+      total_amount:number,
+      _id:string
+    };
+  }
 

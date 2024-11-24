@@ -61,15 +61,15 @@
 
   .tiffin-card-container {
     display: flex;
-    justify-content: center; /* Center card horizontally */
-    align-items: center;    /* Center card vertically if needed */
-    flex-direction: column; /* Stack items vertically */
+    justify-content: center; 
+    align-items: center;    
+    flex-direction: column; 
     margin: 20px;
   }
   
   .my-custom-card {
     display: flex;
-    flex-direction: column; /* Default direction for card content */
+    flex-direction: column;
     width: 300px;
     padding: 16px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -77,13 +77,13 @@
   
   .header-flex {
     display: flex;
-    align-items: center; /* Align avatar and text vertically */
-    gap: 10px; /* Space between avatar and text */
+    align-items: center; 
+    gap: 10px; 
   }
   
   .header-text {
     display: flex;
-    flex-direction: column; /* Stack title and subtitle */
+    flex-direction: column; 
   }
   
   .tiffin-image {
@@ -95,12 +95,12 @@
   
   .actions-flex {
     display: flex;
-    justify-content: space-between; /* Adjust buttons placement */
+    justify-content: space-between; 
     margin-top: 10px;
   }
   
   .my-custom-button {
-    flex-grow: 1; /* Make button expand to fill available space */
-    margin: 0 5px; /* Add some spacing around buttons */
+    flex-grow: 1; 
+    margin: 0 5px; 
   }
   
