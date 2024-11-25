@@ -1,15 +1,17 @@
-
-  <div class="cart">
-  <mat-grid-list cols="3" rowHeight="1:1" gutterSize="16px">
+<div class="cart-container">
+  <mat-grid-list cols="3" gutterSize="16px">
     <mat-grid-tile colspan="2">
-      <app-cart-items
-      *ngFor="let item of cartItems"
-      [cartItem]="item"
-           >
-      </app-cart-items>
+      <div class="cart-items">
+        <app-cart-items
+          *ngFor="let item of cartItems"
+          [cartItem]="item"
+          (removeItem)="removeFromCart($event)"
+        ></app-cart-items>
+      </div>
     </mat-grid-tile>
     <mat-grid-tile colspan="1">
       <app-order-summary [total]="total"></app-order-summary>
     </mat-grid-tile>
   </mat-grid-list>
 </div>
+

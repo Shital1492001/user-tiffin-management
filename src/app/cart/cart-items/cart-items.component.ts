@@ -15,8 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 export class CartItemsComponent {
   @Input() cartItem: any = {}; // Use a specific type instead of `any` if possible
   @Output() removeItem = new EventEmitter<number>();
-
+  constructor(){}
   onRemove() {
+    console.log(this.cartItem.tiffin_id)
     this.removeItem.emit(this.cartItem.tiffin_id);
   }
 }

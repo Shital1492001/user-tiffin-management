@@ -1,12 +1,18 @@
-<mat-card class="cart-item">
-    <img mat-card-xl-image [src]="cartItem.tiffin_image_url" alt="Tiffin Image">
-    <mat-card-content>
-      <h3>{{ cartItem.tiffin_name }}</h3>
-      <p>Price: {{ cartItem.price | currency:'INR'}}</p>
-      <p>Quantity: {{ cartItem.quantity }}</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-flat-button (click)="onRemove()">Remove</button>
-    </mat-card-actions>
-  </mat-card>
+<mat-card class="cart-item mat-elevation-z3">
   
+  <img
+  mat-card-xl-image
+    [src]="cartItem.tiffin_image_url ? cartItem.tiffin_image_url : 'Tiffin1.jpg'"
+    alt="Tiffin Image"
+  />
+
+  <mat-card-content>
+    <h3 class="item-title">{{ cartItem.tiffin_name }}</h3>
+    <p><strong>Price:</strong> {{ cartItem.price | currency: 'INR' }}</p>
+    <p><strong>Quantity:</strong> {{ cartItem.quantity }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button (click)="onRemove()">Remove</button>
+  </mat-card-actions>
+</mat-card>
+

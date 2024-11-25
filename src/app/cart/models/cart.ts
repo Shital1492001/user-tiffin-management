@@ -1,7 +1,7 @@
 export interface Items{
     price:number,
     quantity:number,
-    tiffin_id:string,
+    tiffin_id:number,
     tiffin_image_url:string,
     tiffin_name:string,
     _id:string

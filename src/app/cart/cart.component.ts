@@ -54,13 +54,14 @@ export class CartComponent {
   removeFromCart(tiffinId: number) {
     this.cartService.removeTiffinFromCart(tiffinId).subscribe({
       next: () => {
-        // this.cartItems = this.cartItems.filter(item => item.tiffin_id !== tiffinId);
+        this.cartItems = this.cartItems.filter((item) => item.tiffin_id !== tiffinId); // Update local array
+        this.total = this.cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0); // Recalculate total
         alert('Item removed from cart');
       },
       error: (err) => {
         console.error('Error removing item from cart:', err);
         alert('Failed to remove item from cart');
-      }
+      },
     });
   }
 }

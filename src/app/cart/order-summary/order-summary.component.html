@@ -1,7 +1,12 @@
-<mat-card class="order-summary">
-    <h3>Order Summary</h3>
-    <!-- <p>Total Items: {{ cartItems.length }}</p> -->
-    <p>Total Price: ₹{{ total}}</p>
-    <button mat-stroked-button class="my-custom-button">Checkout</button>
-  </mat-card>
-  
+<mat-card class="order-summary-card mat-elevation-z3">
+  <mat-card-title>Order Summary</mat-card-title>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <p><strong>Total Price:</strong> ₹{{ total }}</p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-flat-button [routerLink]="['/navbar/payment']"  class="checkout-button">
+      Proceed to pay
+    </button>
+  </mat-card-actions>
+</mat-card>
