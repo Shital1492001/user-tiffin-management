@@ -36,4 +36,9 @@ export class AuthService {
     // console.log(admin)
     return this.http.post<EmployeeRegister>(this. baseUrlRegister, formData);
   }
+  logout(): void {
+    sessionStorage.removeItem('token'); // Remove token from sessionStorage
+    sessionStorage.removeItem('refreshToken'); // Remove refreshToken if applicable
+    console.log('User logged out successfully.');
+  }
 }

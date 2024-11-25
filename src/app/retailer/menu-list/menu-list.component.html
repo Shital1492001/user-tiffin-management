@@ -1,0 +1,20 @@
+
+  <div *ngFor="let retailer of menus" class="retailer-section">
+  
+    <h2 class="retailer-name">{{ retailer.retailerName }}</h2>
+    
+  
+    <div class="tiffin-list">
+      <app-menu-card *ngFor="let tiffin of retailer.tiffins" [tiffin]="tiffin"></app-menu-card>
+    </div>
+    
+  </div>
+  
+
+  
+  
+  
+
+
+
+

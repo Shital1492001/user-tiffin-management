@@ -1,13 +1,14 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
+// import { CartComponent } from './cart/cart.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { RegisterComponent } from './auth/register/register.component';
-
+import { MenuListComponent } from './retailer/menu-list/menu-list.component';
+import { MenuDetailsComponent } from './retailer/menu-details/menu-details.component';
 
 export const routes: Routes = [
-    {
-        path:'',
-        component:LoginComponent
-    },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     {
         path:'login',
         component:LoginComponent
@@ -15,5 +16,18 @@ export const routes: Routes = [
     {
         path:'register',
         component:RegisterComponent
-    }
+    },
+    {
+        path: 'navbar',
+        component: NavbarComponent, 
+        children: [
+          { path: 'menus', component: MenuListComponent },
+          // { path: 'cart', component: CartComponent }, 
+          { 
+            path: 'tiffin/:id', 
+            component: MenuDetailsComponent
+           },
+        ],
+        canActivate: [AuthGuard], 
+      },
 ];

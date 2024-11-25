@@ -54,6 +54,10 @@ html {
     transition: background-color 0.3s, color 0.3s;
     transform: scale(0.99);
   }
+  @include mat.icon-overrides((
+      color:gray,
+    ));
+    
     }
 .my-custom-form-field{
   

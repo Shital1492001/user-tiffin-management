@@ -1,0 +1,43 @@
+
+<div class="tiffin-card-container">
+  <mat-card class="my-custom-card" appearance="outlined">
+    <mat-card-header class="header-flex">
+      <div mat-card-avatar class="example-header-image"></div>
+      <div class="header-text">
+        <!-- <mat-icon >eco</mat-icon> -->
+        <!-- <mat-card-title>{{ tiffin._id }}</mat-card-title> -->
+        <mat-card-title>{{ tiffin.tiffin_name }}</mat-card-title>
+        <mat-card-subtitle>Type: {{ tiffin.tiffin_type }}</mat-card-subtitle>
+      </div>
+    </mat-card-header>
+    <img 
+      class="tiffin-image" 
+      mat-card-image 
+      [src]="tiffin.tiffin_image ? tiffin.tiffin_image : 'Tiffin1.jpg'" 
+      alt="TiffinImage"
+    >
+    <mat-card-content>
+      <mat-icon >eco</mat-icon>
+      <mat-card-title>{{ tiffin.quantity }}</mat-card-title>
+      <mat-card-subtitle>Price: {{ tiffin.tiffin_price }}</mat-card-subtitle>
+      <p>
+        {{ tiffin.tiffin_description }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions class="actions-flex">
+      <button mat-stroked-button class="my-custom-button" (click)="navigateToDetails(tiffin._id)">Add to cart</button>
+    </mat-card-actions>
+  </mat-card>
+ 
+</div>
+
+
+
+
+
+
+
+
+
+
+  
