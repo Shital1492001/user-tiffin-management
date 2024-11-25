@@ -12,7 +12,7 @@ export interface Tiffin {
   tiffin_price: number;
   tiffin_rating: number;
   tiffin_isavailable: boolean;
-  tiffin_image:""| null;
+  tiffin_image_url:string;
  // isActive: boolean;
   //tiffin_created_at: string;
   //tiffin_updated_at: string;
@@ -40,6 +40,8 @@ export interface Retailer {
     price:number,
     quantity:number,
     tiffin_id:string,
+    tiffin_name:string,
+    tiffin_image_url:string;
     _id:string
 
   }
@@ -48,7 +50,6 @@ export interface Retailer {
     success: boolean;
     message: string;
     data:{
-
       created_at:string,
       customer_id:string,
       isActive:boolean,

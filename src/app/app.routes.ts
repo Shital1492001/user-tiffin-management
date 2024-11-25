@@ -6,6 +6,7 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { MenuListComponent } from './retailer/menu-list/menu-list.component';
 import { MenuDetailsComponent } from './retailer/menu-details/menu-details.component';
+import { CartComponent } from './cart/cart.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -22,7 +23,7 @@ export const routes: Routes = [
         component: NavbarComponent, 
         children: [
           { path: 'menus', component: MenuListComponent },
-          // { path: 'cart', component: CartComponent }, 
+          { path: 'cart', component: CartComponent }, 
           { 
             path: 'tiffin/:id', 
             component: MenuDetailsComponent
@@ -30,4 +31,5 @@ export const routes: Routes = [
         ],
         canActivate: [AuthGuard], 
       },
+    
 ];

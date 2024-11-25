@@ -1,14 +1,14 @@
 import { Component, Input } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { RetailerServiceService } from '../service/retailer-service.service';
 import { CommonModule } from '@angular/common';
 import { MatCard, MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-menu-details',
-  imports: [MatButtonModule,MatIconModule,CommonModule,MatCardModule,MatCard],
+  imports: [MatButtonModule,MatIconModule,CommonModule,MatCardModule,MatCardModule,RouterModule],
   templateUrl: './menu-details.component.html',
   styleUrl: './menu-details.component.scss'
 })

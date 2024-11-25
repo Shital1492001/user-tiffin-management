@@ -1,0 +1,12 @@
+<mat-card class="cart-item">
+    <img mat-card-xl-image [src]="cartItem.tiffin_image_url" alt="Tiffin Image">
+    <mat-card-content>
+      <h3>{{ cartItem.tiffin_name }}</h3>
+      <p>Price: {{ cartItem.price | currency:'INR'}}</p>
+      <p>Quantity: {{ cartItem.quantity }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button (click)="onRemove()">Remove</button>
+    </mat-card-actions>
+  </mat-card>
+  

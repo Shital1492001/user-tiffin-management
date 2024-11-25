@@ -10,8 +10,8 @@ import { environment } from '../../../environments/environment';
 })
 export class RetailerServiceService {
 
-  baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
- baseUrlAddToCart = environment.apiEndpoint+'/cart/addtiffintocart/';
+ baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
+ baseUrlAddToCart = environment.apiEndpoint+'/employees/cart/addtiffintocart/';
  baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/'
 
   constructor(private http : HttpClient) { }
@@ -25,18 +25,8 @@ export class RetailerServiceService {
     return obs;
   }
 
-  
-
-  // addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  //   const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
-  //   return this.http.post<AddCartResponse>(url, cartData,{headers});
-  // }
-
   addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-    // const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
-  
-    return this.http.post<AddCartResponse>(this.baseUrlAddToCart+tiffinId, cartData);
+       return this.http.post<AddCartResponse>(this.baseUrlAddToCart+tiffinId, cartData);
   }
   
   

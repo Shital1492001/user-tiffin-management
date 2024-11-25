@@ -1,70 +1,14 @@
-<!-- 
- <div class="menu-container">
-  <mat-card class="my-custom-card" appearance="outlined">
-    <div class="menu-details">
-     
-      <div class="menu-image">
-        
-        <img mat-card-xl-image src="'Tiffin1.jpg'" >
-      </div>
-
-    
-      <div *ngFor="let tiffin of tiffinDetails">
-      
-      
-      <div class="menu-info">
-        <mat-card-title>{{ tiffin.tiffin_name }}</mat-card-title>
-        <div class="price-section">
-          <mat-card-subtitle>₹{{ tiffin.tiffin_price }}</mat-card-subtitle>
-
-        
-        </div>
-        
-        
-        <button mat-raised-button color="primary" (click)="handleCartActions()">
-          <ng-container *ngIf = "quantity === 0">Add to Cart</ng-container>
-          <ng-container *ngIf="quantity > 0">
-            <div class="quantity-container">
-            <button (click)="incrementQuantity($event)">+</button>
-            <span class="quantity-display">{{quantity}}</span>
-            <button (click)="decrementQuantity($event)">-</button>
-          </div>
-          </ng-container>
-        </button>
-        
-        <button mat-raised-button color="accent" *ngIf="quantity > 0" (click)="goToCart()">Go to Cart</button>
-        <button mat-raised-button color="accent" *ngIf="quantity === 0" (click)="buyNow()">Buy Now</button>
-        
-  
-        <div class="features">
-          <div><mat-icon>verified_user</mat-icon> Secure Checkout</div>
-          <div><mat-icon>thumb_up</mat-icon> Satisfaction Guaranteed</div>
-          <div><mat-icon>lock</mat-icon> Privacy Protected</div>
-        </div>
-      </div>
-    </div>
-  </mat-card>
-</div>
-  
-   
-   
-  
-
-   
-
-
-   -->
-
    <div class="menu-container">
     <mat-card class="my-custom-card" appearance="outlined">
-      <div class="menu-details">
-        <!-- Image Section -->
-        <div class="menu-image">
-          <img mat-card-xl-image [src]="'Tiffin1.jpg'" alt="Tiffin Image">
-        </div>
-  
+      
         <!-- Product Details Section -->
         <div *ngFor="let tiffin of tiffinDetails">
+          <div class="menu-details">
+            <!-- Image Section -->
+            <div class="menu-image">
+              <img mat-card-xl-image [src]="tiffin.tiffin_image_url ? tiffin.tiffin_image_url : 'Tiffin1.jpg'"  alt="Tiffin Image">
+            </div>
+      
           <div class="menu-info">
             <mat-card-title>{{ tiffin.tiffin_name }}</mat-card-title>
             <div class="price-section">
@@ -82,7 +26,7 @@
               </ng-container>
             </button>
   
-            <button mat-raised-button color="accent" *ngIf="quantity > 0" (click)="goToCart(tiffin._id,quantity)">Go to Cart</button>
+            <button mat-raised-button color="accent" *ngIf="quantity > 0" (click)="goToCart(tiffin._id,quantity)" [routerLink]="['/navbar/cart']">Go to Cart</button>
             <button mat-raised-button color="accent" *ngIf="quantity === 0" (click)="buyNow(tiffin._id,quantity)">Buy Now</button>
   
             <div class="features">
