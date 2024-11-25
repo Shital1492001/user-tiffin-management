@@ -8,30 +8,22 @@ import { AddCartResponse, ApiResponse } from '../models/menu';
   providedIn: 'root'
 })
 export class RetailerServiceService {
-  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2VjYmRiMmMxNDVlYjUwOTJmZmZiZCIsInJvbGUiOiI2NzI4YjZmNDNhNzNjZjc1N2Q4MjRhZTQiLCJpYXQiOjE3MzI0NjU4MjEsImV4cCI6MTczMjQ3MzAyMX0.cdtvfIKCzgOpE2pZAe7So97rQgm_VkuI7spr2LRVhYM"
-  url = "http://localhost:5000/api/employees"
-  // baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
- // baseUrlAddToCart = /cart/addtiffintocart/';
+  token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3M2VjYmRiMmMxNDVlYjUwOTJmZmZiZCIsInJvbGUiOiI2NzI4YjZmNDNhNzNjZjc1N2Q4MjRhZTQiLCJpYXQiOjE3MzI1MDk4ODEsImV4cCI6MTczMjUxNzA4MX0.XVE7odvV-5rzGi0XHLxj4vn1tNh7rVSPihcRzjqzWQU"
+  url = "http://localhost:5000/api"
+  
 
   constructor(private http : HttpClient) { }
 
   getAllMenus(): Observable<ApiResponse> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get<ApiResponse>(`${this.url}/getAllRetailersWithTiffin`, { headers });
+    return this.http.get<ApiResponse>(`${this.url}/employees/getAllRetailersWithTiffin`, { headers });
   }
 
   getTiffinById(tiffinId: string): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`${this.url}/getTiffinofOrgById/${tiffinId}`, { headers });
+    return this.http.get(`${this.url}/employees/getTiffinofOrgById/${tiffinId}`, { headers });
   }
 
-  
-
-  // addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  //   const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
-  //   return this.http.post<AddCartResponse>(url, cartData,{headers});
-  // }
 
   addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
     const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
