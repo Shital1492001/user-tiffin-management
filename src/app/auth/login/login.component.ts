@@ -94,7 +94,7 @@ export class LoginComponent {
             next: (responseData) => {
               console.log('responsedata', responseData);
               sessionStorage.setItem('token', responseData.token); // Save token
-              sessionStorage.setItem('refreshToken', responseData.refreshToken); // Save refreshToken
+              sessionStorage.setItem('refreshToken', responseData.refreshToken);
               this.snackbarService.showSuccess("Login Successfully...!")
               this.router.navigate(['/navbar/menus']);
             },

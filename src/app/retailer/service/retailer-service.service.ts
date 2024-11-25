@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AddCartResponse, ApiResponse } from '../models/menu';
+// import { environment } from '../../../environments/environment';
 import { environment } from '../../../environments/environment';
 
 
@@ -10,7 +11,7 @@ import { environment } from '../../../environments/environment';
 })
 export class RetailerServiceService {
 
-  baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
+baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
  baseUrlAddToCart = environment.apiEndpoint+'/cart/addtiffintocart/';
  baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/'
 
