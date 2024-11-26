@@ -11,7 +11,7 @@ export interface Items{
     success: boolean;
     message: string;
     statusCode: number;
-    _id:string
+    _id:number;
     data: {
       created_at: string;
       customer_id: string;

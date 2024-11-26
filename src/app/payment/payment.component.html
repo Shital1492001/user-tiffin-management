@@ -2,7 +2,7 @@
     <h2>Payment</h2>
     <mat-grid-list cols="3" rowHeight="250px" gutterSize="20px">
       <mat-grid-tile>
-        <app-pay-on-delivery [paymentType]="paymentType"></app-pay-on-delivery>
+        <app-pay-on-delivery [paymentType]="payment_mode"></app-pay-on-delivery>
       </mat-grid-tile>
       <mat-grid-tile>
         <app-grand-total [total]="grandTotal"></app-grand-total>

@@ -23,8 +23,6 @@ export class MenuDetailsComponent {
   constructor(private route : ActivatedRoute,private retailerService: RetailerServiceService){}
 
   ngOnInit():void{
-    // console.log(this.route.params.id);
-    //console.log(this.route.snapshot.paramMap.get('id'));
     const storedQuantity = localStorage.getItem('quantity');
     if (storedQuantity) {
       this.quantity = parseInt(storedQuantity, 10);
@@ -48,17 +46,7 @@ export class MenuDetailsComponent {
     })
 
   }
-  // product = {
-  //   name: 'veg thali',
-  //   price: 100,
-  //   originalPrice: 120,
-  //   discount: 17,
-  //   image: '', // Add image URL here
-  // };
 
-  // store = {
-  //   name: 'startiffins',
-  // };
 
  handleCartActions(){
   if(this.quantity == 0){
@@ -86,36 +74,10 @@ export class MenuDetailsComponent {
  }
 
 
-// goToCart(tiffin_id,quantity){
-  
-//   if(this.quantity > 0){
-//     alert("Go to cart");
-    
-//     //make api call
-//   }
-// }
-
-// goToCart(tiffin_id: number, quantity: number): void {
-//   const cartData = { tiffin_id, quantity };
-//   console.log("Cart Data:", cartData);
-//   if(quantity > 0){
-//     this.retailerService.addTiffinToCart(cartData).subscribe(
-//       (response) => {
-//         console.log("Added to cart successfully:", response);
-//       },
-//       (error) => {
-//         console.error("Error adding to cart:", error);
-//       }
-//     );
-//   }
-  
-  
- 
-// }
 
 goToCart(tiffin_id: number, quantity: number): void {
   if (quantity > 0) {
-    const cartData = { quantity }; // Only send quantity in the body
+    const cartData = { quantity }; 
     console.log("Cart Data:", { tiffin_id, ...cartData });
 
     this.retailerService.addTiffinToCart(tiffin_id, cartData).subscribe(
@@ -138,7 +100,6 @@ buyNow(tiffin_id: number, quantity: number){
   this.goToCart(tiffin_id,quantity);
  
 }
-
 
 
 }
