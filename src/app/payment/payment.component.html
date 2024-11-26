@@ -1,1 +1,23 @@
-<p>payment works!</p>
+<div class="payment-container">
+    <h2>Payment</h2>
+  
+    <!-- MatGridList for arranging the child components in a single row -->
+    <mat-grid-list cols="3" rowHeight="250px" gutterSize="20px">
+      
+      <!-- Pay on Delivery Component -->
+      <mat-grid-tile>
+        <app-pay-on-delivery [paymentType]="paymentType"></app-pay-on-delivery>
+      </mat-grid-tile>
+  
+      <!-- Grand Total Component -->
+      <mat-grid-tile>
+        <app-grand-total [total]="grandTotal"></app-grand-total>
+      </mat-grid-tile>
+  
+      <!-- Place Order Button Component -->
+      <mat-grid-tile>
+        <app-place-order (placeOrder)="onPlaceOrder()"></app-place-order>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  
