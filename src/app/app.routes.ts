@@ -8,6 +8,7 @@ import { MenuListComponent } from './retailer/menu-list/menu-list.component';
 import { MenuDetailsComponent } from './retailer/menu-details/menu-details.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
+import { OrderSuccessComponent } from './order-success/order-success.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -36,5 +37,5 @@ export const routes: Routes = [
         ],
         canActivate: [AuthGuard], 
       },
-    
+      { path: 'order-success', component: OrderSuccessComponent },
 ];

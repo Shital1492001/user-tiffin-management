@@ -4,10 +4,11 @@ import { PlaceOrderComponent } from './place-order/place-order.component';
 import { PayOnDeliveryComponent } from './pay-on-delivery/pay-on-delivery.component';
 import { GrandTotalComponent } from './grand-total/grand-total.component';
 import { CartService } from '../cart/services/cart.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
-  imports: [MatGridListModule,PlaceOrderComponent,PayOnDeliveryComponent,GrandTotalComponent],
+  imports: [MatGridListModule,PlaceOrderComponent,PayOnDeliveryComponent,GrandTotalComponent,RouterModule],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
@@ -15,7 +16,7 @@ export class PaymentComponent {
   paymentType: string = 'cash-on-delivery'; // Default payment type
   grandTotal: number = 0; // Assume this value is calculated from the cart
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService,private router:Router) {}
 
   ngOnInit(): void {
     this.getCartItems();
@@ -37,6 +38,7 @@ export class PaymentComponent {
   }
 
   onPlaceOrder() {
+    this.router.navigate(['/order-success']);
     console.log("Order placed!");
   }
 }
