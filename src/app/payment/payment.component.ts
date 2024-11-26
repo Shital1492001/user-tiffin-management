@@ -5,10 +5,11 @@ import { PayOnDeliveryComponent } from './pay-on-delivery/pay-on-delivery.compon
 import { GrandTotalComponent } from './grand-total/grand-total.component';
 import { CartService } from '../cart/services/cart.service';
 import { PaymentService } from './services/payment.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-payment',
-  imports: [MatGridListModule,PlaceOrderComponent,PayOnDeliveryComponent,GrandTotalComponent],
+  imports: [MatGridListModule,PlaceOrderComponent,PayOnDeliveryComponent,GrandTotalComponent,RouterModule],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss'
 })
