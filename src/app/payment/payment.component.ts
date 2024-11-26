@@ -18,7 +18,7 @@ export class PaymentComponent {
   grandTotal: number = 0; // Assume this value is calculated from the cart
   cartId: number | null = null;
 
-  constructor(private cartService: CartService,private paymentService:PaymentService) {}
+  constructor(private cartService: CartService,private paymentService:PaymentService,private router:Router) {}
 
   ngOnInit(): void {
     this.getCartItems();
@@ -52,6 +52,9 @@ export class PaymentComponent {
       next:(response:any)=>{
         console.log('Order placed successfully:',response);
         alert('Order has been placed successfully!');
+      // { path: 'order-success', component: OrderSuccessComponent },
+        this.router.navigate(['/order-success']);
+        
       },
       error:(err: any)=>{
         console.error('Error placing Order:',err);
