@@ -1,0 +1,16 @@
+<mat-card class="cart-item">
+  
+    <img mat-card-xl-image [src]="cartItem.tiffin_image_url" alt="Tiffin Image">
+    <mat-card-content>
+      <h3>{{ cartItem.tiffin_name }}</h3>
+      <p>Price: {{ cartItem.price *  cartItem.quantity| currency:'INR'}}</p>
+      <button (click)="add(cartItem)">Add</button>
+      <p>Quantity: {{ cartItem.quantity }}</p>
+      <button (click)="dec(cartItem)">Dec</button>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button (click)="removeFromStoredCart(cartItem._id)">Remove</button>
+    </mat-card-actions>
+   
+  </mat-card>
+  

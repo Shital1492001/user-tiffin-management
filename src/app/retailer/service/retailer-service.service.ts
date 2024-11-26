@@ -11,9 +11,10 @@ import { environment } from '../../../environments/environment';
 })
 export class RetailerServiceService {
 
-baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
- baseUrlAddToCart = environment.apiEndpoint+'/cart/addtiffintocart/';
- baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/'
+ baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
+ baseUrlAddToCart = environment.apiEndpoint+'/employees/cart/addtiffintocart/';
+ baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/';
+ baseUrlUpdateQuantity=environment.apiEndpoint+'/employees/cart/updatetiffinquantity/'
 
   constructor(private http : HttpClient) { }
 
@@ -26,18 +27,14 @@ baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin'
     return obs;
   }
 
-  
-
-  // addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-  //   const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
-  //   return this.http.post<AddCartResponse>(url, cartData,{headers});
-  // }
-
   addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-    // const url = `${this.url}/cart/addtiffintocart/${tiffinId}`;
-  
+    
     return this.http.post<AddCartResponse>(this.baseUrlAddToCart+tiffinId, cartData);
+  }
+
+  updateQuantity(tiffinId:number,cartData:{quantity:number,status:"add"|"dec"}){
+    console.log("update quantity",cartData,tiffinId)
+    return this.http.put<any>(this.baseUrlUpdateQuantity+tiffinId, cartData);
   }
   
   

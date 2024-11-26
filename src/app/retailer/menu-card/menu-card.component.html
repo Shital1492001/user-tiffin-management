@@ -13,7 +13,7 @@
     <img 
       class="tiffin-image" 
       mat-card-image 
-      [src]="tiffin.tiffin_image ? tiffin.tiffin_image : 'Tiffin1.jpg'" 
+      [src]="tiffin.tiffin_image_url ? tiffin.tiffin_image_url : 'Tiffin1.jpg'" 
       alt="TiffinImage"
     >
     <mat-card-content>
@@ -25,7 +25,9 @@
       </p>
     </mat-card-content>
     <mat-card-actions class="actions-flex">
-      <button mat-stroked-button class="my-custom-button" (click)="navigateToDetails(tiffin._id)">Add to cart</button>
+      <button mat-stroked-button class="my-custom-button" (click)="buyNow(tiffin._id)">Buy Now</button>
+      <button mat-stroked-button class="my-custom-button" (click)="addToCart(tiffin._id)">Add to Cart</button>
+      <!-- <button></button> -->
     </mat-card-actions>
   </mat-card>
  
