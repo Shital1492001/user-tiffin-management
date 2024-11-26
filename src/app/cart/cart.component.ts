@@ -35,12 +35,8 @@ export class CartComponent {
       next: (response: any) => {
         console.log("Cart Response:", response);
         console.log("Cart Response data:", response.data);
-
-      // Access 'items' directly from the response
       this.cartItems = response.data[0].items; 
       console.log("Cart Items:", this.cartItems);
-
-      // Access total_amount directly from the response
       this.total = response.data[0].total_amount;
       console.log("Total Amount:", this.total);
       },

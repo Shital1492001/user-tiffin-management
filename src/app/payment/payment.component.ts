@@ -3,6 +3,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { PlaceOrderComponent } from './place-order/place-order.component';
 import { PayOnDeliveryComponent } from './pay-on-delivery/pay-on-delivery.component';
 import { GrandTotalComponent } from './grand-total/grand-total.component';
+import { CartService } from '../cart/services/cart.service';
 
 @Component({
   selector: 'app-payment',
@@ -12,16 +13,30 @@ import { GrandTotalComponent } from './grand-total/grand-total.component';
 })
 export class PaymentComponent {
   paymentType: string = 'cash-on-delivery'; // Default payment type
-  grandTotal: number = 100; // Assume this value is calculated from the cart
-  
-  constructor() {}
+  grandTotal: number = 0; // Assume this value is calculated from the cart
+
+  constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    // Fetch or calculate grandTotal here if needed (e.g., from cart service)
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    this.cartService.getCart().subscribe({
+      next: (response: any) => {
+        console.log("Cart Response:", response);
+        console.log("Cart Response data:", response.data);
+      this.grandTotal = response.data[0].total_amount;
+      console.log("Total Amount:", this.grandTotal);
+      },
+      error: (err) => {
+        console.error('Error fetching cart items:', err);
+        alert('Failed to fetch cart items');
+      }
+    });
   }
 
   onPlaceOrder() {
-    // Handle placing the order (e.g., call an API or handle order logic)
     console.log("Order placed!");
   }
 }
