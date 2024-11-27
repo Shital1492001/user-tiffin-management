@@ -16,21 +16,6 @@ export class CartItemsComponent {
 constructor(private retailerSerive:RetailerServiceService){
 
 }
-  // onRemove() {
-  //   this.removeItem.emit(this.cartItem.tiffin_id);
-  // }
-
-  // add(cartItem:any){
-  //   console.log("clicked",cartItem)
-  //  cartItem.quantity = cartItem.quantity + 1;
-  //  console.log(cartItem.quantity )
-  // }
-  // dec(cartItem:any){
-  //   cartItem.quantity = cartItem.quantity + 1;
-  //   console.log(cartItem.quantity )
-
-  // }
-
   ngOnInit() {
     // Load quantity from localStorage on initialization
     const storedCart = this.getStoredCart();

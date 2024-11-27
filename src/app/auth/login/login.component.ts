@@ -98,7 +98,9 @@ export class LoginComponent {
               this.snackbarService.showSuccess("Login Successfully...!")
               this.router.navigate(['/navbar/menus']);
             },
-            error: (e) => console.error('Login Error:', e),
+            error: (e) =>{ console.error('Login Error:', e)
+              this.snackbarService.showError("Login Failed...!")
+            },
             complete: () => console.info('complete'),
           });
         }

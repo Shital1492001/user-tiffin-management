@@ -1,0 +1,49 @@
+<table mat-table [dataSource]="orders" class="mat-elevation-z8">
+  
+    <!-- Retailer Name Column -->
+    <ng-container matColumnDef="retailerName">
+      <th mat-header-cell *matHeaderCellDef> Retailer Name </th>
+      <td mat-cell *matCellDef="let order"> {{ order.cart.retailer_name }} </td>
+    </ng-container>
+  
+    <!-- Payment Mode Column -->
+    <ng-container matColumnDef="paymentMode">
+      <th mat-header-cell *matHeaderCellDef> Payment Mode </th>
+      <td mat-cell *matCellDef="let order"> {{ order.payment_mode }} </td>
+    </ng-container>
+  
+    <!-- Delivery Status Column -->
+    <ng-container matColumnDef="deliveryStatus">
+      <th mat-header-cell *matHeaderCellDef> Delivery Status </th>
+      <td mat-cell *matCellDef="let order"> {{ order.delivery_status }} </td>
+    </ng-container>
+  
+    <!-- Payment Status Column -->
+    <ng-container matColumnDef="paymentStatus">
+      <th mat-header-cell *matHeaderCellDef> Payment Status </th>
+      <td mat-cell *matCellDef="let order"> {{ order.payment_status }} </td>
+    </ng-container>
+  
+    <!-- Items Column -->
+    <ng-container matColumnDef="items">
+      <th mat-header-cell *matHeaderCellDef> Items </th>
+      <td mat-cell *matCellDef="let order">
+        <div *ngFor="let item of order.cart.items">
+          <p>
+            <strong>Tiffin Name:</strong> {{ item.tiffin_name }} |
+            <strong>Type:</strong> {{ item.tiffin_type }} |
+            <strong>Quantity:</strong> {{ item.quantity }} |
+            <strong>Price:</strong> {{ item.price }}
+          </p>
+        </div>
+      </td>
+    </ng-container>
+  
+    <!-- Header Row -->
+    <tr mat-header-row *matHeaderRowDef="['retailerName', 'paymentMode', 'deliveryStatus', 'paymentStatus', 'items']"></tr>
+    
+    <!-- Data Row -->
+    <tr mat-row *matRowDef="let row; columns: ['retailerName', 'paymentMode', 'deliveryStatus', 'paymentStatus', 'items']"></tr>
+  </table>
+  
+ 

@@ -5,21 +5,67 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../../auth/services/auth.service';
-
+import { CartService } from '../../../cart/services/cart.service';
+import { Items } from '../../../retailer/models/menu';
+import {MatBadgeModule} from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
+import { MatMenuModule } from '@angular/material/menu';
 @Component({
   selector: 'app-navbar',
-  imports: [MatToolbarModule,MatIconModule,MatButtonModule,MatTooltipModule,RouterModule],
+  imports: [MatToolbarModule,MatIconModule,MatButtonModule,MatTooltipModule,RouterModule,MatBadgeModule,MatSelectModule,MatMenuModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
+  selectedStatus: string = 'all';
+  cartItems: Items[] = [];
+  total:number=0;
+  cartempty:string=''
+  cartLength =0;
   constructor(
     private authService: AuthService,
     private router: Router,
-    // private cartService: CartService
+    private cartService: CartService
   ) {}
+  ngOnInit(): void {
+    this.getCartItems();
+  }
+
+  orderHistory(status?: string) {
+    console.log('Selected status:', status);
+    this.router.navigate(['/navbar/order-history',status])
+    // Implement your logic here (e.g., filter orders or navigate)
+  }
   onLogout() {
     this.authService.logout();
     this.router.navigate(['/login']);
+  
+  }
+  getCartItems() {
+    this.cartService.getCart().subscribe({
+      next: (response: any) => {
+        if(response.message=="Cart not found"){
+          this.cartempty="your cart is empty...!"
+        }
+      // console.log("Cart Response:", response);
+      // console.log("Cart Response data:", response.data);
+      this.cartItems = response.data[0].items; 
+      // console.log("Cart Items:", this.cartItems);
+      this.cartLength = this.cartItems.reduce((accumulator, item) => {
+        console.log(item.quantity)
+        return accumulator + item.quantity;
+      }, 0);
+
+      console.log("quantity length",this.cartLength)
+      
+      // Access total_amount directly from the response
+      this.total = response.data[0].total_amount;
+      console.log("Total Amount:", this.total);
+      },
+      error: (err) => {
+        console.error('Error fetching cart items:', err);
+        alert('Failed to fetch cart items');
+      }
+    });
   }
 }

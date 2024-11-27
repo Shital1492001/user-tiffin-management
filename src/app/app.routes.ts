@@ -9,6 +9,7 @@ import { MenuDetailsComponent } from './retailer/menu-details/menu-details.compo
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
+import { OrderHistoryComponent } from './order-history/order-history.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
@@ -34,6 +35,16 @@ export const routes: Routes = [
             path: 'payment', 
             component: PaymentComponent
            },
+           {
+            // Optional status
+            path: 'order-history',  // This is the route without status, it will default to 'all'
+            component: OrderHistoryComponent
+          },
+           {
+            path:'order-history/:status',
+            component:OrderHistoryComponent
+           }
+          
         ],
         canActivate: [AuthGuard], 
       },

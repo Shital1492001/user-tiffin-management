@@ -77,6 +77,17 @@ html {
   ));
   
 }
-
+.success-snackbar{
+  @include mat.snack-bar-overrides((
+    container-color: rgb(174, 243, 174),
+    supporting-text-color:green,
+  ));
+}
+.error-snackbar{
+  @include mat.snack-bar-overrides((
+    container-color: rgb(243, 188, 174),
+    supporting-text-color:red,
+  ));
+}
   }
   
