@@ -1,5 +1,6 @@
 <div class="cart-container">
   <mat-grid-list cols="3" gutterSize="16px">
+    @if(!cartempty){
     <mat-grid-tile colspan="2">
       <div class="cart-items">
         <app-cart-items
@@ -9,6 +10,14 @@
         ></app-cart-items>
       </div>
     </mat-grid-tile>
+  }
+  @if(cartempty){
+    <mat-grid-tile colspan="2">
+      <div class="cart-items">
+        {{cartempty}}
+      </div>
+    </mat-grid-tile>
+  }
     <mat-grid-tile colspan="1">
       <app-order-summary [total]="total"></app-order-summary>
     </mat-grid-tile>

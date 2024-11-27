@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AddCartResponse, ApiResponse } from '../models/menu';
+// import { environment } from '../../../environments/environment';
 import { environment } from '../../../environments/environment';
 
 
@@ -12,7 +13,8 @@ export class RetailerServiceService {
 
  baseUrlAllMenus = environment.apiEndpoint+'/employees/getallretailerswithtiffin';
  baseUrlAddToCart = environment.apiEndpoint+'/employees/cart/addtiffintocart/';
- baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/'
+ baseUrlGetTiffinById=environment.apiEndpoint+'/employees/getTiffinofOrgById/';
+ baseUrlUpdateQuantity=environment.apiEndpoint+'/employees/cart/updatetiffinquantity/'
 
   constructor(private http : HttpClient) { }
 
@@ -26,7 +28,13 @@ export class RetailerServiceService {
   }
 
   addTiffinToCart(tiffinId: number, cartData: { quantity: number }): Observable<AddCartResponse> {
-       return this.http.post<AddCartResponse>(this.baseUrlAddToCart+tiffinId, cartData);
+    
+    return this.http.post<AddCartResponse>(this.baseUrlAddToCart+tiffinId, cartData);
+  }
+
+  updateQuantity(tiffinId:number,cartData:{quantity:number,status:"add"|"dec"}){
+    console.log("update quantity",cartData,tiffinId)
+    return this.http.put<any>(this.baseUrlUpdateQuantity+tiffinId, cartData);
   }
   
   

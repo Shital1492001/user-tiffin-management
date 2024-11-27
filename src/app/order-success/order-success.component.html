@@ -3,7 +3,7 @@
     <h2>Your order is confirmed!</h2>
     <p>You have opted for Cash on Delivery. Your tiffin will be delivered soon. Thank you for choosing our service!</p>
     <div>
-      <button mat-flat-button [routerLink]="['/navbar/menus']">Cancel order</button>
+      <button mat-flat-button [routerLink]="['/navbar/menus']" (click)="cancelorder()">Cancel order</button>
       <button mat-flat-button [routerLink]="['/navbar/menus']">Continue orders</button>
     </div>
   </div>

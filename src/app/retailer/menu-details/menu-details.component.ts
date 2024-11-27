@@ -98,8 +98,7 @@ buyNow(tiffin_id: number, quantity: number){
   this.quantity = 1;  
   localStorage.setItem('quantity', this.quantity.toString());
   this.goToCart(tiffin_id,quantity);
- 
-}
+ }
 
 
 }

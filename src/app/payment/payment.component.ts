@@ -14,9 +14,10 @@ import { Router, RouterModule } from '@angular/router';
   styleUrl: './payment.component.scss'
 })
 export class PaymentComponent {
-  payment_mode: string = 'CoD'; // Default payment type
-  grandTotal: number = 0; // Assume this value is calculated from the cart
+  payment_mode: string = 'CoD'; 
+  grandTotal: number = 0;
   cartId: number | null = null;
+  orderId:number =0;
 
   constructor(private cartService: CartService,private paymentService:PaymentService,private router:Router) {}
 
@@ -42,19 +43,26 @@ export class PaymentComponent {
   }
 
   onPlaceOrder() {
-   // console.log("Inside on place order");
     if (!this.cartId) {
       alert('Cart ID is not available.');
       return;
     }else{
-     //console.log("Inside else part of onPlaceOrder")
      this.paymentService.placeOrder(this.cartId,this.payment_mode).subscribe({
       next:(response:any)=>{
+       
         console.log('Order placed successfully:',response);
         alert('Order has been placed successfully!');
-      // { path: 'order-success', component: OrderSuccessComponent },
-        this.router.navigate(['/order-success']);
-        
+        this.orderId=response.data._id;
+        this.router.navigate(['/order-success',this.orderId]);
+        this.paymentService.removeCart(response.data.cart._id).subscribe({
+          next:(response)=>{
+       
+            console.log('remove successfully:',response);
+          },
+          error:(err: any)=>{
+            console.error('Error placing Order:',err);
+          }
+         })   
       },
       error:(err: any)=>{
         console.error('Error placing Order:',err);
@@ -62,7 +70,6 @@ export class PaymentComponent {
       }
      })
     }
-    // console.log("Order placed!");
   }
 }
 

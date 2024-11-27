@@ -23,6 +23,7 @@ export interface Tile {
 export class CartComponent {
   cartItems: Items[] = [];
   total:number=0;
+  cartempty:string=''
 
   constructor(private cartService: CartService) {}
 
@@ -33,8 +34,11 @@ export class CartComponent {
   getCartItems() {
     this.cartService.getCart().subscribe({
       next: (response: any) => {
-        console.log("Cart Response:", response);
-        console.log("Cart Response data:", response.data);
+        if(response.message=="Cart not found"){
+          this.cartempty="your cart is empty...!"
+        }
+      console.log("Cart Response:", response);
+      console.log("Cart Response data:", response.data);
       this.cartItems = response.data[0].items; 
       console.log("Cart Items:", this.cartItems);
       this.total = response.data[0].total_amount;

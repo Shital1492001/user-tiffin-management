@@ -1,5 +1,5 @@
+
 <mat-card class="cart-item mat-elevation-z3">
-  
   <img
   mat-card-xl-image
     [src]="cartItem.tiffin_image_url ? cartItem.tiffin_image_url : 'Tiffin1.jpg'"
@@ -8,8 +8,10 @@
 
   <mat-card-content>
     <h3 class="item-title">{{ cartItem.tiffin_name }}</h3>
-    <p><strong>Price:</strong> {{ cartItem.price | currency: 'INR' }}</p>
+    <p><strong>Price:</strong> {{ cartItem.price *  cartItem.quantity| currency: 'INR' }}</p>
+      <button (click)="add(cartItem)">Add</button>
     <p><strong>Quantity:</strong> {{ cartItem.quantity }}</p>
+      <button (click)="dec(cartItem)">Dec</button>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button (click)="onRemove()">Remove</button>

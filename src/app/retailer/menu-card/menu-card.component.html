@@ -18,14 +18,21 @@
     >
     <mat-card-content>
       <mat-icon >eco</mat-icon>
-      <mat-card-title>{{ tiffin.quantity }}</mat-card-title>
       <mat-card-subtitle>Price: {{ tiffin.tiffin_price }}</mat-card-subtitle>
+      <p>Avaiable: {{ tiffin.tiffin_available_quantity }}</p>
       <p>
         {{ tiffin.tiffin_description }}
       </p>
     </mat-card-content>
     <mat-card-actions class="actions-flex">
-      <button mat-flat-button class="my-custom-button" (click)="navigateToDetails(tiffin._id)">Add to cart</button>
+      <button mat-stroked-button class="my-custom-button" (click)="buyNow(tiffin._id)">Buy Now</button>
+      @if(!flag){
+        <button mat-flat-button class="my-custom-button" (click)="addToCart(tiffin._id)">Add to cart</button>
+       }
+ 
+      @if(flag){
+      <button mat-flat-button class="my-custom-button" [routerLink]="['/navbar/cart']">Go To Cart</button>
+      }
     </mat-card-actions>
   </mat-card>
  
