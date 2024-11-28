@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { Observable } from 'rxjs';
 import { getCartResponse } from '../models/cart';
-import { Tiffin } from '../../retailer/models/menu';
 
 @Injectable({
   providedIn: 'root'

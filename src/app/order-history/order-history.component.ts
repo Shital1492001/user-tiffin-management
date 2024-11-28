@@ -24,27 +24,25 @@ export class OrderHistoryComponent {
    status: string | null = '';
   constructor(private route:ActivatedRoute,private orderHistoryService:OrderHistoryService){}
   ngOnInit():void{
-   this.status = this.route.snapshot.paramMap.get('status')
-  console.log(this.status);
-  if(this.status){
-    this.orderhistory(this.status);
-  }
- 
+    this.route.paramMap.subscribe((params) => {
+      this.status = params.get('status'); // Get 'status' from route
+      console.log('Status:', this.status);
+      this.fetchOrders(this.status); // Fetch orders dynamically
+    });
   }
   
-  orderhistory(status?:string){
-    console.log("Inside")
-    console.log(status);
-   this.orderHistoryService.orderHistory(status).subscribe({
-    next:(response:ApiResponse)=>{
-      this.orders = response.data; 
-      console.log(response);
-    },
-    error(err) {
-      console.error('Error fetching orders',err);
-      alert('Failed to fetch orders');
-    },
-   })
+  fetchOrders(status: string | null) {
+    const formattedStatus = status ?? undefined;
+    this.orderHistoryService.orderHistory(formattedStatus).subscribe({
+      next: (response: ApiResponse) => {
+        this.orders = response.data;
+        console.log('Orders:', this.orders);
+      },
+      error: (err) => {
+        console.error('Error fetching orders:', err);
+        alert('Failed to fetch orders');
+      },
+    });
   }
-
+  
 }
