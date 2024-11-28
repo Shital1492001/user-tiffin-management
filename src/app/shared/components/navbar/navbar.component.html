@@ -5,18 +5,15 @@
   <span>Tiffin Service</span>
   <span class="space-between"></span>
   <button mat-button [matMenuTriggerFor]="ordersMenu">My Orders</button>
-
-  <!-- Dropdown Menu -->
   <mat-menu #ordersMenu="matMenu">
-    <button mat-menu-item (click)="orderHistory()">All</button>
     <button mat-menu-item (click)="orderHistory('pending')">Pending</button>
     <button mat-menu-item (click)="orderHistory('delivered')">Delivered</button>
     <button mat-menu-item (click)="orderHistory('cancelled')">Cancelled</button>
   </mat-menu>
   
-  <button mat-icon-button>
+  <!-- <button mat-icon-button>
     <mat-icon>search</mat-icon>
-  </button>
+  </button> -->
   <button mat-icon-button [routerLink]="['/navbar/cart']">
 <mat-icon matBadge={{cartLength}}>add_shopping_cart</mat-icon>
    

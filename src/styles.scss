@@ -80,13 +80,13 @@ html {
 .success-snackbar{
   @include mat.snack-bar-overrides((
     container-color: rgb(174, 243, 174),
-    supporting-text-color:green,
+    supporting-text-color:var(--mat-sys-tertiary),
   ));
 }
 .error-snackbar{
   @include mat.snack-bar-overrides((
     container-color: rgb(243, 188, 174),
-    supporting-text-color:red,
+    supporting-text-color:var(--mat-sys-primary),
   ));
 }
   }

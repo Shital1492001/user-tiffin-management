@@ -10,6 +10,7 @@ import { Items } from '../../../retailer/models/menu';
 import {MatBadgeModule} from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
 import { MatMenuModule } from '@angular/material/menu';
+import { SnackbarService } from '../../services/snackbar.service';
 @Component({
   selector: 'app-navbar',
   imports: [MatToolbarModule,MatIconModule,MatButtonModule,MatTooltipModule,RouterModule,MatBadgeModule,MatSelectModule,MatMenuModule],
@@ -17,7 +18,6 @@ import { MatMenuModule } from '@angular/material/menu';
   styleUrl: './navbar.component.scss'
 })
 export class NavbarComponent {
-  selectedStatus: string = 'all';
   cartItems: Items[] = [];
   total:number=0;
   cartempty:string=''
@@ -25,7 +25,8 @@ export class NavbarComponent {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private cartService: CartService
+    private cartService: CartService,
+    private snackbarService:SnackbarService
   ) {}
   ngOnInit(): void {
     this.getCartItems();
@@ -34,10 +35,10 @@ export class NavbarComponent {
   orderHistory(status?: string) {
     console.log('Selected status:', status);
     this.router.navigate(['/navbar/order-history',status])
-    // Implement your logic here (e.g., filter orders or navigate)
   }
   onLogout() {
     this.authService.logout();
+    this.snackbarService.showSuccess("Logout Successfully..!")
     this.router.navigate(['/login']);
   
   }
@@ -47,18 +48,13 @@ export class NavbarComponent {
         if(response.message=="Cart not found"){
           this.cartempty="your cart is empty...!"
         }
-      // console.log("Cart Response:", response);
-      // console.log("Cart Response data:", response.data);
       this.cartItems = response.data[0].items; 
-      // console.log("Cart Items:", this.cartItems);
       this.cartLength = this.cartItems.reduce((accumulator, item) => {
         console.log(item.quantity)
         return accumulator + item.quantity;
       }, 0);
 
       console.log("quantity length",this.cartLength)
-      
-      // Access total_amount directly from the response
       this.total = response.data[0].total_amount;
       console.log("Total Amount:", this.total);
       },

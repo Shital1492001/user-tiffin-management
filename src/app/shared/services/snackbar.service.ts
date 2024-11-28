@@ -9,14 +9,14 @@ export class SnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
   showSuccess(message: string) {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message,'', {
       duration: 3000,
       panelClass: ['success-snackbar'],
     });
   }
 
   showError(message: string) {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, '', {
       duration: 3000,
       panelClass: ['error-snackbar'], 
     });
