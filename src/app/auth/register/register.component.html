@@ -75,6 +75,9 @@
                     organization.org_name
                   }}</mat-option>
                   }
+                  <!-- <cdk-virtual-scroll-viewport appendOnly itemSize="50" class="scroll-viewport">
+                    <mat-option *cdkVirtualFor="let organization of oragnizations" [value]="organization._id">{{organization.org_name}}</mat-option>
+                  </cdk-virtual-scroll-viewport> -->
                 </mat-select>
                 <mat-icon matPrefix>corporate_fare</mat-icon>
                 <mat-error>

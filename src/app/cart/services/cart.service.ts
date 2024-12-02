@@ -17,7 +17,7 @@ export class CartService {
     return observableData;
   }
   removeTiffinFromCart(tiffinId:number): Observable<any> {
-    const observableData = this.http.delete<any>(this.removeCartUrl+tiffinId);
+    const observableData = this.http.get<any>(this.removeCartUrl+tiffinId);
     return observableData;
   }
   

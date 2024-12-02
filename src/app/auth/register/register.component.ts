@@ -21,6 +21,7 @@ import { AuthService } from '../services/auth.service';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Router,RouterModule } from '@angular/router';
 import { SnackbarService } from '../../shared/services/snackbar.service';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @Component({
   selector: 'app-register',
@@ -35,6 +36,7 @@ import { SnackbarService } from '../../shared/services/snackbar.service';
     MatFormFieldModule,
     MatIconModule,
     RouterModule,
+    ScrollingModule
   
   ],
   templateUrl: './register.component.html',

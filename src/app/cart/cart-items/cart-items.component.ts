@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RetailerServiceService } from '../../retailer/service/retailer-service.service';
 
+
 @Component({
   selector: 'app-cart-items',
   imports: [CommonModule,MatCardModule,MatButtonModule],
@@ -17,11 +18,10 @@ constructor(private retailerSerive:RetailerServiceService){
 
 }
   ngOnInit() {
-    // Load quantity from localStorage on initialization
-    const storedCart = this.getStoredCart();
-    if (storedCart[this.cartItem.tiffin_id]) {
-      this.cartItem.quantity = storedCart[this.cartItem.tiffin_id];
-    }
+    // const storedCart = this.getStoredCart();
+    // if (storedCart[this.cartItem.tiffin_id]) {
+    //   this.cartItem.quantity = storedCart[this.cartItem.tiffin_id];
+    // }
   }
   onRemove() {
     console.log(this.cartItem.tiffin_id)
@@ -49,13 +49,13 @@ constructor(private retailerSerive:RetailerServiceService){
   private updateStoredCart(id: string, quantity: number) {
     const storedCart = this.getStoredCart();
     storedCart[id] = quantity;
-    localStorage.setItem('cart', JSON.stringify(storedCart));
+    // localStorage.setItem('cart', JSON.stringify(storedCart));
   }
 
   removeFromStoredCart(id: string) {
     const storedCart = this.getStoredCart();
     delete storedCart[id];
-    localStorage.setItem('cart', JSON.stringify(storedCart));
+    // localStorage.setItem('cart', JSON.stringify(storedCart));
   }
 
   private getStoredCart(): { [key: string]: number } {
